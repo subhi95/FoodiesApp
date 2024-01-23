@@ -3,9 +3,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
 
-
 export default function Home() {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [foodcat, setFoodCat] = useState([]);
   const [fooditem, setFooditem] = useState([]);
 
@@ -18,10 +17,10 @@ export default function Home() {
     });
 
     response = await response.json();
-    //console.log("hello", response);
+    console.log("hello", response);
     setFooditem(response[0]);
     setFoodCat(response[1]);
-    // console.log(response[0], response[1]);
+    //console.log(response[0], response[1]);
   };
 
   useEffect(() => {
@@ -43,7 +42,10 @@ export default function Home() {
         >
           <div className="carousel-inner" id="carousel">
             <div className="carousel-caption " style={{ zIndex: "10" }}>
-              <div className="d-flex justify-content-center text-white" role="search">
+              <div
+                className="d-flex justify-content-center text-white"
+                role="search"
+              >
                 <input
                   className="form-control me-2 text-white"
                   type="search"
@@ -51,7 +53,9 @@ export default function Home() {
                   aria-label="Search"
                   style={{ background: "transparent" }}
                   value={search}
-                  onChange={(e) => { setSearch(e.target.value) }}
+                  onChange={(e) => {
+                    setSearch(e.target.value);
+                  }}
                 />
                 {/* <button
                   className="btn btn-outline-success text-white bg-success"
@@ -124,7 +128,13 @@ export default function Home() {
                 <hr></hr>
                 {fooditem.length !== 0 ? (
                   fooditem
-                    .filter((item) => (item.CategoryName === data.CategoryName) && (item.name?.toLowerCase().includes(search.toLocaleLowerCase())))
+                    .filter(
+                      (item) =>
+                        item.CategoryName === data.CategoryName &&
+                        item.name
+                          ?.toLowerCase()
+                          .includes(search.toLocaleLowerCase())
+                    )
                     .map((filterItems) => {
                       return (
                         <div
@@ -134,7 +144,6 @@ export default function Home() {
                           <Card
                             foodItem={filterItems}
                             options={filterItems.options?.[0] || []}
-
                           ></Card>
                         </div>
                       );

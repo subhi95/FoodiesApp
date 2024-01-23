@@ -36,7 +36,6 @@ export default function Signup() {
 
   return (
     <>
-
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-success">
           <Link className="navbar-brand fs-2 fst-italic" to="/">
