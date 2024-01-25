@@ -7,7 +7,7 @@
     "start": "npm run dev",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": " chmod +x nodemon && npm i"
+    "build": "npm i"
   },
   "author": "FoodDeliveryApp",
   "license": "ISC",
