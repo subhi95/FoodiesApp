@@ -9,12 +9,15 @@ export default function Home() {
   const [fooditem, setFooditem] = useState([]);
 
   const loadData = async () => {
-    let response = await fetch("http://localhost:4000/api/foodData", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    let response = await fetch(
+      "https://the-foodies-backend.onrender.com/api/foodData",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     response = await response.json();
     console.log("hello", response);
