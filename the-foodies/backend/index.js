@@ -6,7 +6,10 @@ const port = 4000;
 const mongoDB = require("./db");
 mongoDB();
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://the-foodies-frontend.onrender.com"
+  );
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   res.header(
     "Access-Control-Allow-Headers",
