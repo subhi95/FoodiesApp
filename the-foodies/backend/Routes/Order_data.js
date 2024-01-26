@@ -3,6 +3,33 @@ const router = express.Router();
 const order = require("../models/Orders");
 const { route } = require("./CreateUser");
 
+// router.post('/Order_data', async (req, res) => {
+//     try {
+//         const { email, order_data, Order_date } = req.body;
+//         console.log(req.body)
+//         // Validate required fields
+//         if (!email) {
+//             return res.status(400).send({ error: "Email is required" });
+//         }
+
+//         // Add Order_date to order_data
+//         order_data.splice(0, 0, { Order_date });
+
+//         const existingOrder = await order.findOne({ email });
+
+//         if (!existingOrder) {
+//             await order.create({ email, order_data });
+//         } else {
+//             await order.findOneAndUpdate({ email }, { $push: { order_data } });
+//         }
+
+//         res.json({ success: true });
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).send({ error: error.message });
+//     }
+// });
+
 router.post('/Order_data', async (req, res) => {
     try {
         const { email, order_data, Order_date } = req.body;
@@ -10,6 +37,11 @@ router.post('/Order_data', async (req, res) => {
         // Validate required fields
         if (!email) {
             return res.status(400).send({ error: "Email is required" });
+        }
+
+        // Validate order_data
+        if (!Array.isArray(order_data)) {
+            return res.status(400).send({ error: "order_data must be an array" });
         }
 
         // Add Order_date to order_data
@@ -29,6 +61,7 @@ router.post('/Order_data', async (req, res) => {
         res.status(500).send({ error: error.message });
     }
 });
+
 
 router.post('/MyOrder_data', async (req, res) => {
     try {
